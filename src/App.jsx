@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import LandingPage from './Components/LandingPage';
 import MainPage from './Components/MainPage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function AstronomyFactApp() {
   const [showLandingPage, setShowLandingPage] = useState(true);
@@ -10,12 +9,16 @@ export default function AstronomyFactApp() {
     setShowLandingPage(false);
   };
   
+  const handleReturnToLanding = () => {
+    setShowLandingPage(true);
+  };
+  
   return (
     <div className="font-sans">
       {showLandingPage ? (
         <LandingPage onEnter={handleEnter} />
       ) : (
-        <MainPage />
+        <MainPage onReturnToLanding={handleReturnToLanding} />
       )}
     </div>
   );

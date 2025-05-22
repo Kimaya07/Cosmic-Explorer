@@ -4,7 +4,7 @@ import FactCard from './FactCard';
 import nasaApiService from './NasaApi';
 import { Star, Loader, AlertTriangle, ChevronLeft } from 'lucide-react';
 
-const MainPage = () => {
+const MainPage = ({ onReturnToLanding }) => { // Add prop here
   const [facts, setFacts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -146,19 +146,20 @@ const MainPage = () => {
             </svg>
           </div>
         </div>
-        {/* Back button */}
-        <div className="absolute top-6 left-140 z-20">
-      <button 
-       
-        className="group flex items-center space-x-2 bg-black bg-opacity-40 hover:bg-opacity-60 text-purple-300 hover:text-purple-200 px-4 py-2 rounded-full backdrop-blur-sm border border-purple-500 border-opacity-30 transition-all duration-300"
-      >
-        <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform duration-300" />
-        <span>Return to Launch</span>
-      </button>
-      
-      {/* Glow effect */}
-      <div className="absolute inset-0 -z-10 bg-purple-500 opacity-20 blur-md rounded-full"></div>
-    </div>
+        
+        {/* Back button with navigation */}
+        <div className="absolute top-6 left-145 z-20">
+          <button 
+            onClick={onReturnToLanding} // Use the prop function
+            className="group flex items-center space-x-2 bg-black bg-opacity-40 hover:bg-opacity-60 text-purple-300 hover:text-purple-200 px-4 py-2 rounded-full backdrop-blur-sm border border-purple-500 border-opacity-30 transition-all duration-300"
+          >
+            <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform duration-300" />
+            <span>Return to Launch</span>
+          </button>
+          
+          {/* Glow effect */}
+          <div className="absolute inset-0 -z-10 bg-purple-500 opacity-20 blur-md rounded-full"></div>
+        </div>
       </div>
       
       {/* Shooting star animation */}
